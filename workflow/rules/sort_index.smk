@@ -5,11 +5,11 @@ rule sort_cram:
         "results/{sample}/{conf}/{conf}.sorted.cram"
     params:
         extra = lambda wildcards: "-O CRAM --reference " + star_genome(wildcards.sample),
-        tmp_dir = directory("/tmp/")
+        tmp_dir = directory(os.getenv("TMPDIR", "/tmp/"))  # Default to "/tmp/" if TMP_DIR is not set
     threads:
-        workflow.cores
+        8
     wrapper:
-        "file:resources/snakemake-wrappers/bio/samtools/sort"
+        "0.74.0/bio/samtools/sort"
 
 rule index_cram:
     input:
@@ -17,6 +17,6 @@ rule index_cram:
     output:
         "results/{sample}/{conf}/{conf}.sorted.cram.crai"
     params:
-        "-@ {workflow.cores}"
+        "-@ 16"
     wrapper:
-        "file:resources/snakemake-wrappers/bio/samtools/index"
+        "0.74.0/bio/samtools/index"

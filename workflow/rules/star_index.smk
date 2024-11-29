@@ -7,12 +7,16 @@ rule run_index:
     output:
         directory("{genomepath}/{genome}_index")
     threads:
-        workflow.cores
+        16
     params:
         extra=lambda wildcards: "--outTmpDir {genomepath}/{genome}_index/STARtmp".format(genomepath=wildcards.genomepath, genome=wildcards.genome),
         sjdbOverhang=lambda wildcards: config['config']['star']['genomes'][wildcards.genome]['sjdbOverhang']
     log:
         "{genomepath}/star_index_{genome}.log"
     wrapper:
-        "file:resources/snakemake-wrappers/bio/star/index"
+        "0.74.0/bio/star/index"
+
+
+
+
 

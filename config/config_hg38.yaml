@@ -1,7 +1,7 @@
-"config":
-  "star":
-    "alignment":
-      "default":
+config:
+  star:
+    alignment:
+      default:
         - "--outSAMtype BAM Unsorted"
         - "--outSAMattributes NH HI AS NM MD"
         - "--outFilterMultimapNmax 20"
@@ -25,35 +25,83 @@
         - "--chimOutType WithinBAM"
         - "--chimMainSegmentMultNmax 10"
         - "--outSJfilterCountUniqueMin 3 1 1 1"
-    "genomes":
-      "hg38_ref":
-        "data": "/project/RDS-SMS-GDT-RW/data/hg38_ref"
-        "fasta": "Homo_sapiens_assembly38.fasta"
-        "gtf": "gencode.v38.annotation.gtf"
-        "sjdbOverhang": "150"
+    genomes:
+      hg38_ref:
+        data: "/scratch/project/tcr_ml/rna-seq2/resources"
+        fasta: "Homo_sapiens_assembly38.fasta"
+        gtf: "gencode.v38.annotation.gtf"
+        sjdbOverhang: "150"
 
-"data":
-  "fastq": "/fastq/raw"
-  "trimmed": "/fastq/trimmed"
+data:
+  fastq: "/QRISdata/Q7444"
+  trimmed: "/scratch/project/tcr_ml/rna-seq2/trimmed"
 
-"region_of_interest":
-  - "''chr1:151401724-151460494''"
-  - "''chr1:173823653-173859808''"
+region_of_interest:
+  - "chr1:151401724-151460494"
+  - "chr1:173823653-173859808"
 
-"samples":
-  "SAMPLE1":
-    "genome": "hg38_ref"
-    "reads":
-      "r1": "SAMPLE1_R1.fastq.gz"
-      "r2": "SAMPLE1_R2.fastq.gz"
-    "variations":
-      "default":
+samples:
+  UDCB-01:
+    genome: "hg38_ref"
+    reads:
+      r1: "UDCB-01_22KKVWLT3_TTGTATCAGG-ACAGAGGCCA_L001_R1.fastq.gz"
+      r2: "UDCB-01_22KKVWLT3_TTGTATCAGG-ACAGAGGCCA_L001_R2.fastq.gz"
+    variations:
+      default:
       - "default"
-  "SAMPLE2":
-    "genome": "hg38_ref"
-    "reads":
-      "r1": "SAMPLE2_R1.fastq.gz"
-      "r2": "SAMPLE2_R2.fastq.gz"
-    "variations":
-      "default":
+  UDCB-02:
+    genome: "hg38_ref"
+    reads:
+      r1: "UDCB-02_22KKVWLT3_ACAGCGACCA-CAGGAGCTCT_L001_R1.fastq.gz"
+      r2: "UDCB-02_22KKVWLT3_ACAGCGACCA-CAGGAGCTCT_L001_R2.fastq.gz"
+    variations:
+      default:
+      - "default"
+  UDCB-07:
+    genome: "hg38_ref"
+    reads:
+      r1: "UDCB-07_22KKVWLT3_TCCACACAGA-TTGTCGGATG_L001_R1.fastq.gz"
+      r2: "UDCB-07_22KKVWLT3_TCCACACAGA-TTGTCGGATG_L001_R2.fastq.gz"
+    variations:
+      default:
+      - "default"
+  UDCB-08:
+    genome: "hg38_ref"
+    reads:
+      r1: "UDCB-08_22KKVWLT3_AAGTGTTAGG-GCTAGTTCCG_L001_R1.fastq.gz"
+      r2: "UDCB-08_22KKVWLT3_AAGTGTTAGG-GCTAGTTCCG_L001_R2.fastq.gz"
+    variations:
+      default:
+      - "default"
+  UDCB-11:
+    genome: "hg38_ref"
+    reads:
+      r1: "UDCB-11_22KKVWLT3_GATTCTGAAT-AGCGGTGGAC_L001_R1.fastq.gz"
+      r2: "UDCB-11_22KKVWLT3_GATTCTGAAT-AGCGGTGGAC_L001_R2.fastq.gz"
+    variations:
+      default:
+      - "default"
+  UDCB-14:
+    genome: "hg38_ref"
+    reads:
+      r1: "UDCB-14_22KKVWLT3_GTGCTAGGTT-TGAATATTGC_L001_R1.fastq.gz"
+      r2: "UDCB-14_22KKVWLT3_GTGCTAGGTT-TGAATATTGC_L001_R2.fastq.gz"
+    variations:
+      default:
+      - "default"
+  UDCB-15:
+    genome: "hg38_ref"
+    reads:
+      r1: "UDCB-15_22KKVWLT3_TAGAGAATAC-TATAGATTCG_L001_R1.fastq.gz"
+      r2: "UDCB-15_22KKVWLT3_TAGAGAATAC-TATAGATTCG_L001_R2.fastq.gz"
+    variations:
+      default:
+      - "default"
+  UDCB-27:
+    genome: "hg38_ref"
+    reads:
+      r1: "UDCB-27_22KKVWLT3_CACAGCGGTC-ATTCCTATTG_L001_R1.fastq.gz"
+      r2: "UDCB-27_22KKVWLT3_CACAGCGGTC-ATTCCTATTG_L001_R2.fastq.gz"
+    variations:
+      default:
       - "default"

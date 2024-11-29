@@ -5,3 +5,6 @@ Log.out
 logs
 results/*
 **/.DS_Store
+rna
+*.out
+*.error

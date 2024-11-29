@@ -15,6 +15,6 @@ rule align:
         # optional parameters
         extra=lambda wildcards: get_star_config(wildcards.sample, wildcards.conf)
     threads:
-        workflow.cores
+        16
     wrapper:
-        "file:resources/snakemake-wrappers/bio/star/align"
+        "0.74.0/bio/star/align"

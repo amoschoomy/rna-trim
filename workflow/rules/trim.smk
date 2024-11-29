@@ -11,7 +11,7 @@ rule fastqc_pre_trim:
     log:
         "logs/{sample}/fastqc_pre_trim.log"
     threads:
-        workflow.cores
+        16
     shell:
         "mkdir -p {output.fastqc} && fastqc {params} -t {threads} "
         "--outdir {output.fastqc} {input.r1} {input.r2} > {log} 2>&1"
@@ -38,13 +38,13 @@ rule trim:
         # optional parameters
         # extra="-phred33"
     threads:
-        workflow.cores
+        16
         # optional specification of memory usage of the JVM that snakemake will respect with global
         # resource restrictions (https://snakemake.readthedocs.io/en/latest/snakefiles/rules.html#resources)
         # and which can be used to request RAM during cluster job submission as `{resources.mem_mb}`:
         # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
     shell:
-        "trimmomatic PE -threads {threads} {params.extra} "
+        "java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -threads {threads} {params.extra} "
         "{input.r1} {input.r2} "
         "{output.r1} {output.r1_unpaired} "
         "{output.r2} {output.r2_unpaired} "
@@ -60,7 +60,7 @@ rule fastqc_post_trim:
     log:
         "logs/{sample}/fastqc_post_trim.log"
     threads:
-        workflow.cores
+        16
     shell:
         "mkdir -p {output.fastqc} && fastqc {params} -t {threads} "
         "--outdir {output.fastqc} {input.r1} {input.r2} > {log} 2>&1"

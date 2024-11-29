@@ -8,9 +8,9 @@ rule sort_align_bam:
     params:
         extra = lambda wildcards: "--reference " + star_genome(wildcards.sample),
     threads:
-        workflow.cores
+        16
     wrapper:
-        "file:resources/snakemake-wrappers/bio/samtools/sort"
+        "0.74.0/bio/samtools/sort"
 
 rule index_align_bam:
     input:
@@ -20,9 +20,9 @@ rule index_align_bam:
     log:
         "logs/{sample}/{conf}/index_align_bam.log"
     params:
-        "-@ {workflow.cores}"
+        "-@ 16"
     wrapper:
-        "file:resources/snakemake-wrappers/bio/samtools/index"
+        "0.74.0/bio/samtools/index"
 
 rule subset_bam:
     input:
@@ -36,7 +36,7 @@ rule subset_bam:
         extra = lambda wildcards: "-O BAM --reference " + star_genome(wildcards.sample),
 	regions = regions_of_interest(),
     threads:
-        workflow.cores
+        16
     shell:
         "samtools view -@ {threads} -b -o {output.bam} {params.extra} "
 	"{input.bam} {params.regions} > {log} 2>&1"
@@ -51,9 +51,9 @@ rule sort_bam:
     params:
         extra = lambda wildcards: "--reference " + star_genome(wildcards.sample),
     threads:
-        workflow.cores
+        16
     wrapper:
-        "file:resources/snakemake-wrappers/bio/samtools/sort"
+        "0.74.0/bio/samtools/sort"
 
 rule index_bam:
     input:
@@ -63,6 +63,6 @@ rule index_bam:
     log:
         "logs/{sample}/{conf}/index_bam.log"
     params:
-        "-@ {workflow.cores}"
+        "-@ 16"
     wrapper:
-        "file:resources/snakemake-wrappers/bio/samtools/index"
+        "0.74.0/bio/samtools/index"
